@@ -1,25 +1,21 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
-int busca(FILE *arquivo, int n, int valor, int *vet) {
+int busca(int n, int valor, int *vet) {
     if (n-1 < 0) { // Caso base: se n-1 for menor que 0, o valor não foi encontrado (Pior caso)
-        fprintf(arquivo, "O valor %d não foi encontrado no vetor.\n", valor);
+        printf("O valor %d não foi encontrado no vetor.\n", valor);
         return 0;
     } else if (valor == vet[n-1]) { // Se o valor for encontrado na posição n-1
-        fprintf(arquivo, "O valor %d foi encontrado na posição vet[%d].\n", valor, n-1);
+        printf("O valor %d foi encontrado na posição vet[%d].\n", valor, n-1);
         return 0;
     } else { // Chamada recursiva para verificar o próximo elemento
-        return busca(arquivo, n-1, valor, vet);
+        return busca(n-1, valor, vet);
     } // Melhor caso: se o valor for encontrado na última posição do vetor (n-1)
 }
 
 int main() {
-    FILE *arquivo = fopen("busca_sequencial.txt", "w+");
-    if (arquivo == NULL) {
-        printf("Erro ao abrir o arquivo.\n");
-        return 1;
-    }
-    int valor;
+    clock_t tempo_inicial = clock();
     int vet[100] = { // Mandei a IA gerar valores aleatórios para o array (valores entre 0 e 1000)
         532, 17, 894, 203, 76, 645, 998, 410, 59, 721,
         300, 12, 857, 499, 63, 940, 275, 801, 34, 688,
@@ -32,13 +28,10 @@ int main() {
         960, 147, 520, 381, 699, 234, 78, 845, 412, 563,
         910, 299, 640, 51, 728, 167, 884, 346, 602, 19
     };
-    printf("Digite o valor a ser buscado: ");
-    if (scanf("%d", &valor) != 1) {
-        printf("Entrada inválida para o valor a ser buscado.\n");
-        return 1;
-    }
-    busca(arquivo, 100, valor, vet);
-    fclose(arquivo);
+    busca(100, 845, vet); // busca(Total de elementos, valor a ser procurado, vetor)
+    clock_t tempo_final = clock();
+    double duracao = (double)(tempo_final - tempo_inicial)/ CLOCKS_PER_SEC;
+    printf("o tempo de execucao foi %.10f\n", duracao);
 
     return 0;
 }

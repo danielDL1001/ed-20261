@@ -1,14 +1,16 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-int fatorecur(FILE *arquivo, int num) {
-    if (num == 0 || num == 1) { // fatorial de zero
+int fatorecur(int num) { // Mais devagar (Tempo de execução: 0.0000100000s)
+    if (num == 0 || num == 1) {
         return 1;
     } else {
-        return num * fatorecur(arquivo, num - 1);
+        return num * fatorecur(num - 1);
     }
 }
 
-int fato(FILE *arquivo, int num) {
+int fato(int num) { // Mais rápido (Tempo de execução: 0.0000070000s)
     int resultado = 1;
     for (int i = 2; i <= num; i++) {
         resultado *= i;
@@ -17,32 +19,27 @@ int fato(FILE *arquivo, int num) {
 }
 
 int main() {
-    FILE *arquivo = fopen("fatorial.txt", "w+");
-    if (arquivo == NULL) {
-        printf("Erro ao abrir o arquivo.\n");
-        return 1;
-    }
-    int num;
-    printf("Digite um número inteiro positivo: ");
-    if (scanf("%d", &num) != 1) {
-        fprintf(arquivo, "Entrada inválida.\n");
-        fclose(arquivo);
-        return 1;
-    }
+    int num = 6;
     if (num < 0) {
-        fprintf(arquivo, "Entrada inválida. Digite um número inteiro positivo.\n");
-        fclose(arquivo);
+        printf("Entrada inválida. Digite um número inteiro positivo.\n");
         return 1;
     }
-    printf("Deseja calcular o fatorial de %d por recursividade? (s/n): ", num);
-    char resposta;
-    scanf(" %c", &resposta);
-    if (resposta == 's' || resposta == 'S') {
-        fprintf(arquivo, "O fatorial de %d é %d\n", num, fatorecur(arquivo, num));
-    } else {
-        fprintf(arquivo, "O fatorial de %d é %d\n", num, fato(arquivo, num));
-    }
-    fclose(arquivo);
+    clock_t tempo_inicial, tempo_final;
+    double duracao;
+    printf("Calcular o fatorial de %d por recursão:\n", num);
+    tempo_inicial = clock();
+    printf("O fatorial de %d por recursão é %d.\n", num, fatorecur(num)); // Fatorial por Recursão
+    tempo_final = clock();
+    duracao = (double)(tempo_final - tempo_inicial)/ CLOCKS_PER_SEC;
+    printf("O tempo de execucao foi %.10f\n", duracao);
+
+
+    printf("\nCalcular o fatorial de %d por repetição:\n", num);
+    tempo_inicial = clock();
+    printf("O fatorial de %d por repetição é %d.\n", num, fato(num)); // Fatorial por Repetição
+    tempo_final = clock();
+    duracao = (double)(tempo_final - tempo_inicial)/ CLOCKS_PER_SEC;
+    printf("O tempo de execucao foi %.10f\n", duracao);
 
     return 0;
 }

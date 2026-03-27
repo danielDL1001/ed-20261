@@ -9,9 +9,15 @@ int main() {
     strcpy(contato.nome, "Daniel");
     strcpy(contato.telefone, "1111-1111");
 
-    adicionar_contato(agenda, contato);
+    adicionar_contato(&agenda, contato);
+    lista_contato(&agenda);
 
-    lista_contato(agenda);
+    Contato contato;
+    strcpy(contato.nome, "Daniel");
+    strcpy(contato.telefone, "1111-1111");
+
+    adicionar_contato(&agenda, contato);
+    lista_contato(&agenda);
 
 
     return 0;

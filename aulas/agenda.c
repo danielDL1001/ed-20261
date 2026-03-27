@@ -8,24 +8,24 @@ Agenda criar_agenda(int tamanho) {
     return agenda;
 }
 
-void adicionar_contato(Agenda agenda, Contato contato) {
-    if (agenda.tamanho == agenda.quantidade) {
+void adicionar_contato(Agenda *agenda, Contato contato) {
+    if (agenda->tamanho == agenda->quantidade) {
         printf("Agenda lotata\n");
         return;
     }
 
-    agenda.contatos[agenda.quantidade] = contato;
-    agenda.quantidade++;
+    agenda->contatos[agenda->quantidade] = contato;
+    agenda->quantidade++;
 }
 
-void lista_contato(Agenda agenda) {
-    if (agenda.quantidade == 0) {
+void lista_contato(Agenda *agenda) {
+    if (agenda->quantidade == 0) {
         printf("Agenda vazia\n");
         return;
     }
 
-    for (int i=0; i<agenda.quantidade; i++){
-        printf("%s - %s\n", agenda.contatos[i].nome,
-            agenda.contatos[i].telefone);
+    for (int i=0; i<agenda->quantidade; i++){
+        printf("%s - %s\n", agenda->contatos[i].nome,
+            agenda->contatos[i].telefone);
     }
 }

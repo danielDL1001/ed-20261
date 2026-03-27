@@ -5,19 +5,17 @@
 int main() {
     Agenda agenda = criar_agenda(10);
 
-    Contato contato;
-    strcpy(contato.nome, "Daniel");
-    strcpy(contato.telefone, "1111-1111");
+    Contato contato1;
+    strcpy(contato1.nome, "Daniel");
+    strcpy(contato1.telefone, "1111-1111");
+    adicionar_contato(&agenda, contato1);
 
-    adicionar_contato(&agenda, contato);
-    lista_contato(&agenda);
+    Contato contato2;
+    strcpy(contato2.nome, "Mickey");
+    strcpy(contato2.telefone, "2222-2222");
+    adicionar_contato(&agenda, contato2);
 
-    Contato contato;
-    strcpy(contato.nome, "Daniel");
-    strcpy(contato.telefone, "1111-1111");
-
-    adicionar_contato(&agenda, contato);
-    lista_contato(&agenda);
+    listar_contato(&agenda);
 
 
     return 0;

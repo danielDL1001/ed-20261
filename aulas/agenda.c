@@ -18,7 +18,7 @@ void adicionar_contato(Agenda *agenda, Contato contato) {
     agenda->quantidade++;
 }
 
-void lista_contato(Agenda *agenda) {
+void listar_contato(Agenda *agenda) {
     if (agenda->quantidade == 0) {
         printf("Agenda vazia\n");
         return;

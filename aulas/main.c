@@ -20,3 +20,10 @@ int main() {
 
     return 0;
 }
+
+/*
+    Copilar com: 
+    
+    gcc main.c agenda.c -o programa
+    ./programa
+*/

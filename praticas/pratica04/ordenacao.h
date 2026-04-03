@@ -1,15 +1,14 @@
-#ifdef ORDENACAO_H
+#ifndef ORDENACAO_H
 #define ORDENACAO_H
 
 typedef struct algoritmo_t {
     int num;
     int array_size;
-} Algoritmo;
+} alg;
 
-Algoritmo criar_algoritmo(int num);
-void bubble_sort(Algoritmo *algoritmo);
-void selection_sort(Algoritmo *algoritmo);
-void quick_sort(Algoritmo *algoritmo);
-double calcular_tempo(Algoritmo *algoritmo);
+alg criar_algoritmo(int num);
+void bubble_sort(alg *algoritmo, int *array);
+void selection_sort(alg *algoritmo, int *array);
+void quick_sort(alg *algoritmo, int *array);
 
 #endif

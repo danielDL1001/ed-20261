@@ -8,6 +8,9 @@
 
 int main ()
 {
+    clock_t tempo_inicial, tempo_final;
+    double duracao;
+
     int vetor [TAMANHO];
     for (int i = 0; i < TAMANHO; i++) 
     {
@@ -17,14 +20,17 @@ int main ()
     printf("Vetor antes de ordenar\n");
     imprimir_vetor (vetor, TAMANHO);
     
-    clock_t inicio = clock();
+    clock_t tempo_inicial = clock();
     bubble_sort (vetor , TAMANHO);
-    clock_t termino = clock();
-    float duracao = (float)(termino - inicio) / CLOCKS_PER_SEC;
+    clock_t tempo_final = clock();
 
     printf ("Vetor depois de ordenar em %fs\n", duracao);
     imprimir_vetor (vetor, TAMANHO);
+
+    duracao = (double)(tempo_final - tempo_inicial) / CLOCKS_PER_SEC;
+    printf("Vetor depois de ordenar em %f segundos\n", duracao);
     
+    return 0;
 }
 
 // Copilar: gcc ordenacao.c testa_bubblesort_plus.c -o testa_bubblesort_plus.out

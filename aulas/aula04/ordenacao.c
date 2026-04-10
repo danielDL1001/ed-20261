@@ -7,7 +7,7 @@ void troca(int *a, int *b) {
     *b = aux;
 }
 
-void bubblesort(int v[], int n) { //O(n)
+void bubble_sort(int v[], int n) { //O(n)
     for (int i = 0; i < n - 1; i++) {
         for (int j = i+1; j < n; j++) {
             if (v[i] > v[j]) {
@@ -22,5 +22,29 @@ void imprimir_vetor(int v[], int n) {
     for (int i = 0; i < n; i++) {
         printf("%i, ", v[i]);
     }
-    printf("] \n");
+    printf("%i] \n", v[n-1]);
+}
+
+int particionar_vetor(int v[], int inicio, int fim) {
+    int pivo = v[fim];
+    int i = inicio - 1;
+
+    for (int j = inicio; j < fim; j++) {
+        if (v[j] < pivo) {
+            i++;
+            troca(&v[i], &v[j]);
+        }
+    }
+    troca(&v[i + 1], &v[fim]);
+
+    return i + 1;
+}
+
+void quick_sort(int v[], int inicio, int fim) {
+    if (inicio < fim) {
+        int pivo = particionar_vetor(v, inicio, fim);
+        quick_sort(v, inicio, pivo - 1);
+        quick_sort(v, pivo + 1, fim);
+    }
+
 }

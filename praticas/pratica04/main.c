@@ -16,21 +16,21 @@ int main() {
 
     // Bubble Sort
     tempo_inicial = clock();
-    bubble_sort(&alg1, array);
+    bubble_sort(&alg1, array, 20);
     tempo_final = clock();
     duracao = (double)(tempo_final - tempo_inicial) / CLOCKS_PER_SEC;
     printf("Algoritmo 1: %.2f\n", duracao);
 
     // Selection Sort
     tempo_inicial = clock();
-    selection_sort(&alg2, array);
+    selection_sort(&alg2, array, 20);
     tempo_final = clock();
     duracao = (double)(tempo_final - tempo_inicial) / CLOCKS_PER_SEC;
     printf("Algoritmo 2: %.2f\n", duracao);
 
     // Quick Sort
     tempo_inicial = clock();
-    quick_sort(&alg3, array);
+    quick_sort(&alg3, array, 20);
     tempo_final = clock();
     duracao = (double)(tempo_final - tempo_inicial) / CLOCKS_PER_SEC;
     printf("Algoritmo 3: %.2f\n", duracao);

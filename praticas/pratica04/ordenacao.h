@@ -1,14 +1,13 @@
 #ifndef ORDENACAO_H
 #define ORDENACAO_H
 
-typedef struct algoritmo_t {
-    int num;
-    int array_size;
-} alg;
+void troca(int *a, int *b);
+void imprimir_vetor(int v[], int n);
+int particionar_vetor(int v[], int inicio, int fim);
+void bubble_sort(int v[], int n);
+void selection_sort(int v[], int inicio, int fim);
+void quick_sort(int v[], int inicio, int fim);
 
-alg criar_algoritmo(int num);
-void bubble_sort(alg *algoritmo, int *array, int size);
-void selection_sort(alg *algoritmo, int *array, int size);
-void quick_sort(alg *algoritmo, int *array, int size);
+
 
 #endif

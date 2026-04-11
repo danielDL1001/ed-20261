@@ -1,39 +1,52 @@
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 #include <time.h>
 #include "ordenacao.h"
 
+#define TAMANHO 10000
+
 int main() {
     clock_t tempo_inicial, tempo_final;
-    double duracao;
-    
+    double dur_bubble, dur_selection, dur_quick;
 
-    alg alg1 = criar_algoritmo(1);
-    alg alg2 = criar_algoritmo(2);
-    alg alg3 = criar_algoritmo(3);
-
-    int array[20] = {42, 7, 19, 88, 3, 56, 24, 91, 15, 60, 1, 73, 34, 27, 99, 12, 48, 65, 5, 81};
+    int vetor [TAMANHO];
+    for (int i = 0; i < TAMANHO; i++) 
+    {
+        vetor [i] = rand();
+    }
 
     // Bubble Sort
     tempo_inicial = clock();
-    bubble_sort(&alg1, array, 20);
+    bubble_sort (vetor , TAMANHO);
     tempo_final = clock();
-    duracao = (double)(tempo_final - tempo_inicial) / CLOCKS_PER_SEC;
-    printf("Algoritmo 1: %.2f\n", duracao);
+    // Tempo de execução do Bubble Sort
+    dur_bubble = (double)(tempo_final - tempo_inicial) / CLOCKS_PER_SEC;
+    
 
     // Selection Sort
     tempo_inicial = clock();
-    selection_sort(&alg2, array, 20);
+    selection_sort(vetor, 0, TAMANHO - 1);
     tempo_final = clock();
-    duracao = (double)(tempo_final - tempo_inicial) / CLOCKS_PER_SEC;
-    printf("Algoritmo 2: %.2f\n", duracao);
+    // Tempo de execução do Selection Sort
+    dur_selection = (double)(tempo_final - tempo_inicial) / CLOCKS_PER_SEC;
 
     // Quick Sort
     tempo_inicial = clock();
-    quick_sort(&alg3, array, 20);
+    quick_sort(vetor, 0, TAMANHO - 1);
     tempo_final = clock();
-    duracao = (double)(tempo_final - tempo_inicial) / CLOCKS_PER_SEC;
-    printf("Algoritmo 3: %.2f\n", duracao);
+    // Tempo de execução do Quick Sort
+    dur_quick = (double)(tempo_final - tempo_inicial) / CLOCKS_PER_SEC;
+
+    // Imprime o vetor ordenado
+    imprimir_vetor (vetor, TAMANHO);
+
+    // Imprime os tempos de execução dos algoritmos
+    printf("Tempo de execução do Bubble Sort: %f segundos\n", dur_bubble); // 10mil elementos, o tempo foi 0.423219 segundos
+    printf("Tempo de execução do Selection Sort: %f segundos\n", dur_selection); // 10mil elementos, o tempo foi 0.172459 segundos
+    printf("Tempo de execução do Quick Sort: %f segundos\n", dur_quick); // 10mil elementos, o tempo foi 0.482881 segundos
 
     return 0;
 }
+
+// Copilar: gcc ordenacao.c main.c -o main.out
+// Executar: ./main.out

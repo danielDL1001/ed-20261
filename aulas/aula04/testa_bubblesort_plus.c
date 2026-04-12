@@ -33,5 +33,8 @@ int main ()
     return 0;
 }
 
+// Copilar TUDO: gcc *.c -lm -o a.out
+// Executar: ./a.out
+
 // Copilar: gcc ordenacao.c testa_bubblesort_plus.c -o testa_bubblesort_plus.out
 // Executar: ./testa_bubblesort_plus.out

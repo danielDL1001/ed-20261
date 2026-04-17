@@ -7,9 +7,12 @@
 
 int main() {
     int vetor[TAMANHO];
+    printf("[");
     for(int i =0; i< TAMANHO; i++){
         vetor[i] = rand() % TAMANHO; // Preenche o vetor com números aleatórios
+        printf("%i, ", vetor[i]);
     }
+    printf("]\n");
 
     int valor;
     printf("Entre com um numero para buscar: ");
@@ -25,3 +28,6 @@ int main() {
 
     return 0;
 }
+
+// Copilar: gcc selecao.c testa_busca_sequencial.c -lm -o busca_sequencial.out
+// Executar: ./busca_sequencial.out

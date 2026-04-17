@@ -1,11 +1,9 @@
 #include <stdio.h>
 #include "selecao.h"
 
-#define TAMANHO 10
-
-int busca_sequencial(int vetor[], int n, int valor) {
-    for (int i = 0; i < TAMANHO; i++) { // O(n)
-        if (vetor[i] == valor) {
+int busca_sequencial(int v[], int n, int valor) {
+    for (int i = 0; i < n; i++) { // O(n)
+        if (v[i] == valor) {
             return i; // Retorna o índice onde o valor foi encontrado
         }
     }

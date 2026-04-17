@@ -1,6 +1,6 @@
-#ifndef SLECAO_H
+#ifndef SELECAO_H
 #define SELECAO_H
 
-busca_sequencial(int vetor[], int n, int valor);
+int busca_sequencial(int v[], int n, int valor);
 
 #endif

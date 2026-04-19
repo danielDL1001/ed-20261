@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include "selecao.h"
 
-
-
 int linear_search(int v[], int n, int target) {
     for (size_t i = 0; i < n; i++) {
         if (v[i] == target) {
@@ -43,14 +41,5 @@ int quick_select(int v[], int n, int k) {
     } else {
         return v[left]; // Retorna o k-ésimo menor elemento
     }
-}
-
-int busca_sequencial(int v[], int n, int valor) {
-    for (int i = 0; i < n; i++) { // O(n)
-        if (v[i] == valor) {
-            return i; // Retorna o índice onde o valor foi encontrado
-        }
-    }
-    return -1; // Retorna -1 se o valor não for encontrado
 }
 

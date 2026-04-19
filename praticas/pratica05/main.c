@@ -3,19 +3,21 @@
 #include <time.h>
 #include "selecao.h"
 
-#define TAMANHO 1000
+#define TAMANHO 100
 
 int main() {
     clock_t inicio_tempo, final_tempo;
     int vetor[TAMANHO];
 
+    // Vetor[TAMANHO]
     printf("[");
     for(int i =0; i< TAMANHO; i++){
-        vetor[i] = rand() % TAMANHO; // Preenche o vetor com números aleatórios
+        vetor[i] = rand() % TAMANHO; // Pre enche o vetor com números aleatórios
         printf("%i, ", vetor[i]);
     }
     printf("]\n");
 
+    // Imprime o primeiro e o último elemento do vetor
     printf("Primeiro = %i, Ultimo = %i\n", vetor[0], vetor[TAMANHO-1]);
 
     int valor;

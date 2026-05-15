@@ -1,12 +1,12 @@
 #ifndef SELECAO_H
 #define SELECAO_H
 
-typedef struct {
+typedef struct No {
     int dado;
     struct No *proximo; // Ponteiro para o próximo nó
 } No;
 
-typedef struct {
+typedef struct ListaEncadeada {
     No *primeiro; 
     No *ultimo;
     int quantidade;
@@ -16,8 +16,9 @@ ListaEncadeada*criar_lista();
 void destruir(ListaEncadeada *lista);
 void adcionar_final(ListaEncadeada *lista, int valor);
 int lista_vazia(ListaEncadeada *lista);
-No *buscar_no(ListaEncadeada *lista, int valor);
-void remover(ListaEncadeada *lista, int valor  );
+No *buscar(ListaEncadeada *lista, int valor);
+void remover(ListaEncadeada *lista, int valor);
+void imprimir(ListaEncadeada *lista);
 
 
 #endif

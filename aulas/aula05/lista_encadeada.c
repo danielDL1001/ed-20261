@@ -67,6 +67,7 @@ void remover(ListaEncadeada *lista, int valor)
     No *no = lista->primeiro;
     if(no->dado == valor){
         lista->primeiro = no->proximo;
+        lista->quantidade--;
         free(no);
         return;
     }
@@ -74,41 +75,38 @@ void remover(ListaEncadeada *lista, int valor)
     // remove o do meio
     No *anterior = no;
     while (no->proximo != NULL) {
+        anterior = no;
         no = no->proximo;
         if (no->dado == valor) {
             anterior->proximo = no->proximo;
-            free(no);
+            lista->quantidade--;
             return;
         }
     }
 
     // remove o ultimo
-    if (no->proximo == NULL) {
+    if (no->proximo == NULL && no->dado == valor) {
         lista->ultimo = anterior;
     }
-    
-
-    /* Lista (Modo Hard):
-
-    // Verificar se o primeiro nó é o que deve ser removido
-    if (anterior->dado == valor) {
-        lista->primeiro = anterior->proximo;
-    } else {
-        while (posterior != NULL)
-        {
-            if (posterior->dado == valor){
-                anterior->proximo = posterior->proximo;
-                break;
-            }
-            anterior = posterior;
-            posterior = posterior->proximo;
-        }
-        if(posterior->proximo == NULL){
-            
-        }
-    }
-
-    lista->quantidade--;
     free(no);
-    */
+}
+
+void imprimir(ListaEncadeada *lista)
+{
+    if(lista_vazia(lista)) return;
+
+    No *no = lista->primeiro;
+    while (no != NULL)
+    {
+        printf("%d ", no->dado);
+        no = no->proximo;
+    }
+    printf("\n");
+
+    printf("[");
+    for(int i = 0; i < lista->quantidade; i++) {
+        printf("%d, ", no->dado);
+        no = no->proximo;
+    }
+    printf("]\n");
 }

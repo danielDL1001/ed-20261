@@ -15,12 +15,22 @@ int main(void) {
     adcionar_final(lista, 90);
 
     printf("Quantidade de elementos na lista: %d\n", lista->quantidade);
-    No *no = lista->primeiro;
-    while (no != NULL)
-    {
-        printf("Valor encontrado: %d\n", no->dado);
-        no = no->proximo;
-    }
+    imprimir(lista);
+    printf("\n");
+
+    No *no = buscar(lista, 60);
+    printf("O valor 60 esta No %p\n", no);
+    No *no2 = buscar(lista, 65);
+    printf("O valor 65 esta No %p\n", no2);
+
+    remover(lista, 10);
+    remover(lista, 50);
+
+    
+
     
     return 0;
 }
+
+// Copilar: gcc lista_encadeada.c main.c -lm -o le.out
+// Executar: ./le.out

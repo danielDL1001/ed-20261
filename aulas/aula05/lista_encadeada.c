@@ -14,10 +14,16 @@ ListaEncadeada *criar_lista()
     return lista;
 }
 
-void destuir(ListaEncadeada *lista)
+void destruir(ListaEncadeada *lista)
 {
     free(lista);
 }
+
+int lista_vazia(ListaEncadeada *lista)
+{
+    return lista != NULL && lista->primeiro == NULL;
+}
+
 void adcionar_final(ListaEncadeada *lista, int valor)
 {
     No *no = (No *) malloc(sizeof(No));
@@ -38,17 +44,13 @@ void adcionar_final(ListaEncadeada *lista, int valor)
 
 }
 
-int lista_vazia(ListaEncadeada *lista)
-{
-    return lista != NULL && lista->primeiro == NULL;
-}
-
 int buscar(ListaEncadeada *lista, int valor)
 {
     if(lista_vazia(lista)) return NULL;
 
     No *no = lista->primeiro;
-    while (no != NULL) {
+    while (no != NULL)
+    {
         if (no->dado == valor) return no;
         no = no->proximo;
     }
@@ -57,5 +59,56 @@ int buscar(ListaEncadeada *lista, int valor)
 
 void remover(ListaEncadeada *lista, int valor)
 {
+    // Lista (Modo Easy):
+
+    if (lista_vazia(lista)) return;
+
+    // remover o primeiro nó
+    No *no = lista->primeiro;
+    if(no->dado == valor){
+        lista->primeiro = no->proximo;
+        free(no);
+        return;
+    }
+
+    // remove o do meio
+    No *anterior = no;
+    while (no->proximo != NULL) {
+        no = no->proximo;
+        if (no->dado == valor) {
+            anterior->proximo = no->proximo;
+            free(no);
+            return;
+        }
+    }
+
+    // remove o ultimo
+    if (no->proximo == NULL) {
+        lista->ultimo = anterior;
+    }
     
+
+    /* Lista (Modo Hard):
+
+    // Verificar se o primeiro nó é o que deve ser removido
+    if (anterior->dado == valor) {
+        lista->primeiro = anterior->proximo;
+    } else {
+        while (posterior != NULL)
+        {
+            if (posterior->dado == valor){
+                anterior->proximo = posterior->proximo;
+                break;
+            }
+            anterior = posterior;
+            posterior = posterior->proximo;
+        }
+        if(posterior->proximo == NULL){
+            
+        }
+    }
+
+    lista->quantidade--;
+    free(no);
+    */
 }

@@ -6,7 +6,7 @@ typedef struct No {
     struct No *proximo; // Ponteiro para o próximo nó
 } No;
 
-typedef struct ListaEncadeada {
+typedef struct {
     No *primeiro; 
     No *ultimo;
     int quantidade;
@@ -19,6 +19,5 @@ int lista_vazia(ListaEncadeada *lista);
 No *buscar(ListaEncadeada *lista, int valor);
 void remover(ListaEncadeada *lista, int valor);
 void imprimir(ListaEncadeada *lista);
-
 
 #endif

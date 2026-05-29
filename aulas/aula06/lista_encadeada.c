@@ -82,13 +82,13 @@ void remover(ListaEncadeada *lista, int valor)
     // remove o do meio
     No *anterior = no;    
     while (no->proximo != NULL) {
-       anterior = no;
-       no = no->proximo;
-       if (no->dado == valor) {
-         anterior->proximo = no->proximo;
-         lista->quantidade--;
-         break;
-       }
+        anterior = no;
+        no = no->proximo;
+    if (no->dado == valor) {
+        anterior->proximo = no->proximo;
+        lista->quantidade--;
+        break;
+        }
     }
     
     // remove o ultimo

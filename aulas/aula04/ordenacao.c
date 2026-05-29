@@ -23,7 +23,7 @@ int particionar_vetor(int v[], int inicio, int fim) {
     for (int j = inicio; j < fim; j++) {
 
         // Se o elemento atual for menor que o pivô
-        if (v[j] <= pivo) {
+        if (v[j] < pivo) {
 
             // Avança o índice dos menores
             i++;
@@ -92,6 +92,7 @@ void selection_sort(int v[], int inicio, int fim) {
 }
 
 void quick_sort(int v[], int inicio, int fim) {
+    // Caso base: só executa se ainda houver elementos para ordenar
     if (inicio < fim) {
 
         // Particiona o vetor e pega a posição final do pivô

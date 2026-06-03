@@ -11,8 +11,8 @@ int main(void) {
 
     pilha_exibir(pilha);
 
-    pilha_desempilhar(pilha, 0);
-    pilha_desempilhar(pilha, 0);
+    pilha_desempilhar(pilha);
+    pilha_desempilhar(pilha);
     pilha_exibir(pilha);
     printf("Topo da pilha após desempilhar: %d\n", pilha_topo(pilha)->dado);
 

@@ -33,7 +33,7 @@ void pilha_empilhar(Pilha *pilha, int valor) { // Função que adiciona um eleme
 }
 
 
-void pilha_desempilhar(Pilha *pilha, int valor) { // Função que retira um elemento no topo da pilha
+void pilha_desempilhar(Pilha *pilha) { // Função que retira um elemento no topo da pilha
     if (pilha_esta_vazia(pilha)) return;
     // Armazenar o nó a ser removido, atualizar o topo da pilha e liberar a memória do nó removido
     No *temp = pilha->topo;
@@ -45,21 +45,20 @@ void pilha_desempilhar(Pilha *pilha, int valor) { // Função que retira um elem
 
 void pilha_destruir(Pilha *pilha) { // Função para destruir a pilha e liberar a memória alocada
     while (!pilha_esta_vazia(pilha)) { // Desempilhar todos os elementos da pilha antes de liberar a memória da estrutura da pilha
-        pilha_desempilhar(pilha, 0);
+        pilha_desempilhar(pilha);
     }
     free(pilha); // Liberar a memória alocada para a estrutura da pilha
 }
 
-void pilha_exibir(Pilha *pilha) { // Função para exibir os elementos da pilha
+void pilha_exibir(Pilha *pilha) {
     No *atual = pilha->topo;
     printf("[");
     while (atual != NULL) {
-        for (int i = 0; i < pilha->quantidade-1; i++) {
-            printf("%d, ", atual->dado);
-            atual = atual->proximo;
-        }
-        printf("%d]\n", atual->dado-1);
-        
+        printf("%d", atual->dado);
+        if (atual->proximo != NULL)
+            printf(", ");
+        atual = atual->proximo; /* Evita segmentation fault:
+        Acessando o próximo nó quando atual for NULL.*/
     }
     printf("]\n");
 }

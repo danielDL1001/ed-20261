@@ -44,3 +44,40 @@ void fila_desenfileirar(Fila *fila) {
         printf("Fila vazia. Não é possível desenfileirar.\n");
     }
 }
+
+void fila_exibir(Fila *fila) {
+    if (fila != NULL) {
+        No *atual = fila->inicio;
+        printf("Fila: ");
+        while (atual != NULL) {
+            printf("%d ", atual->dado);
+            atual = atual->proximo;
+        }
+        printf("\n");
+    }
+}
+
+int fila_inicio(Fila *fila) {
+    if (fila != NULL && fila->inicio != NULL) {
+        return fila->inicio->dado;
+    }
+    printf("Fila vazia. Não há início para retornar.\n");
+    return -1; // Retorna -1 para indicar que a fila está vazia
+}
+
+int fila_esta_vazia(Fila *fila) {
+    return (fila != NULL && fila->quantidade == 0);
+}
+
+void fila_destruir(Fila *fila) {
+    if (fila != NULL) {
+        No *atual = fila->inicio;
+        while (atual != NULL) {
+            No *temp = atual;
+            atual = atual->proximo;
+            free(temp); // Libera a memória de cada nó
+        }
+        free(fila); // Libera a memória da estrutura da fila
+    }
+}
+

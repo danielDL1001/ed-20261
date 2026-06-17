@@ -1,24 +1,24 @@
 #ifndef BST_H
 #define BST_H
 
-struct No { // Estrutura para um nó da árvore binária
+typedef struct No {
     int dado;
     struct No *esquerda;
     struct No *direita;
-};
+} No;
 
-struct BST { // Estrutura para a árvore binária
-    struct No *raiz;
-};
+typedef struct BST {
+    No *raiz;
+} arvore;
 
-struct BST* criarBST();
-struct No* criarNo(int valor);
-void inserir(struct BST *arvore, int valor);
-void remover(struct BST *arvore, int valor);
-void exibirPreOrdem(struct No *no);
-void exibirEmOrdem(struct No *no);
-void exibirPosOrdem(struct No *no);
-int arvore_esta_vazia(struct BST *arvore); 
-void destruir_arvore(struct No *no);
+arvore* criarBST();
+No* criarNo(int valor);
+void inserir(arvore *arv, int valor);
+void remover(arvore *arv, int valor);
+void exibirPreOrdem(No *no);
+void exibirEmOrdem(No *no);
+void exibirPosOrdem(No *no);
+int arvore_esta_vazia(arvore *arv); 
+void destruir_arvore(No *no);
 
 #endif

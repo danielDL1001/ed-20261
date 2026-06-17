@@ -60,6 +60,7 @@ void remover(arvore *arvore, int valor) {
     }
 
     if (atual == NULL) {
+        printf("Valor %d não encontrado na árvore.\n", valor);
         return; 
     }
 
